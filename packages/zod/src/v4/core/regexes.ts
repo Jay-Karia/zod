@@ -15,6 +15,9 @@ export function nanoidOfLength(length: number): RegExp {
   return new RegExp(`^[a-zA-Z0-9_-]{${length}}$`);
 }
 
+/** ISO 9362 */
+export const bic: RegExp = /^[A-Z]{6}(?!00)[\dA-Z]{2}(?:[\dA-Z]{3})?$/u;
+
 /** ISO 8601-1 duration regex. Does not support the 8601-2 extensions like negative durations or fractional/negative components. */
 export const duration: RegExp =
   /^P(?:(\d+W)|(?!.*W)(?=\d|T\d)(\d+Y)?(\d+M)?(\d+D)?(T(?=\d)(\d+H)?(\d+M)?(\d+([.,]\d+)?S)?)?)$/;

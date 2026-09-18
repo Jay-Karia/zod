@@ -489,6 +489,19 @@ export const $ZodUUID: core.$constructor<$ZodUUID> = /*@__PURE__*/ core.$constru
   $ZodStringFormat.init(inst, def);
 });
 
+//////////////////////////////    ZodBic    //////////////////////////////
+
+export interface $ZodBicDef extends $ZodStringFormatDef<"bic"> {}
+export interface $ZodBicInternals extends $ZodStringFormatInternals<"bic"> {}
+export interface $ZodBic extends $ZodType {
+  _zod: $ZodBicInternals;
+}
+
+export const $ZodBic: core.$constructor<$ZodBic> = /*@__PURE__*/ core.$constructor("$ZodBic", (inst, def): void => {
+  def.pattern ??= regexes.bic;
+  $ZodStringFormat.init(inst, def);
+});
+
 //////////////////////////////   ZodEmail   //////////////////////////////
 
 export interface $ZodEmailDef extends $ZodStringFormatDef<"email"> {}

@@ -607,6 +607,22 @@ export function _isoDuration<T extends schemas.$ZodISODuration>(
   });
 }
 
+// BIC
+export type $ZodBicParams = StringFormatParams<schemas.$ZodBic, "when">;
+export type $ZodCheckBicParams = CheckStringFormatParams<schemas.$ZodBic, "when">;
+// @__NO_SIDE_EFFECTS__
+export function _bic<T extends schemas.$ZodBic>(
+  Class: util.SchemaClass<T>,
+  params?: string | $ZodBicParams | $ZodCheckBicParams
+): T {
+  return new Class({
+    type: "string",
+    format: "bic",
+    check: "string_format",
+    ...util.normalizeParams(params),
+  });
+}
+
 // Number
 export type $ZodNumberParams = TypeParams<schemas.$ZodNumber<number>, "coerce"> & {
   checks?: readonly checks.$ZodCheck<number>[];

@@ -524,6 +524,7 @@ export interface ZodString extends _ZodString<core.$ZodStringInternals<string>> 
   ): this;
   /** @deprecated Use `z.iso.duration()` instead. */
   duration(params?: string | core.$ZodCheckISODurationParams): this;
+  bic(params?: string | core.$ZodCheckBicParams): this;
 }
 
 export const ZodString: core.$constructor<ZodString> = /*@__PURE__*/ core.$constructor<ZodString>(
@@ -611,6 +612,9 @@ export const ZodString: core.$constructor<ZodString> = /*@__PURE__*/ core.$const
     duration(params) {
       return this.check(core._isoDuration(ZodISODuration, params as any));
     },
+    bic(params) {
+      return this.check(core._bic(ZodBic, params as any));
+    },
   }
 );
 
@@ -696,6 +700,21 @@ export const ZodISODuration: core.$constructor<ZodISODuration> = /*@__PURE__*/ c
     ZodStringFormat.init(inst, def);
   }
 );
+
+//////////////////////////////////////////////
+//////////////////////////////////////////////
+//////////                          //////////
+//////////         ZodIBic          //////////
+//////////                          //////////
+//////////////////////////////////////////////
+//////////////////////////////////////////////
+export interface ZodBic extends ZodStringFormat<"bic"> {
+  _zod: core.$ZodBicInternals;
+}
+export const ZodBic: core.$constructor<ZodBic> = /*@__PURE__*/ core.$constructor("ZodBic", (inst, def) => {
+  core.$ZodBic.init(inst, def);
+  ZodStringFormat.init(inst, def);
+});
 
 // ZodEmail
 export interface ZodEmail extends ZodStringFormat<"email"> {
